@@ -1,18 +1,19 @@
 import { useState } from "react";
-
+import { Link } from "react-router-dom";
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <header className="bg-white">
-      <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+    <header className="px-12 bg-white">
+      <div className="flex items-center justify-between py-4 mx-auto max-w-7xl">
         {/* Logo */}
-        <div className="text-lg font-bold text-[#000000]">Brisphere</div>
-
+        <Link to='/'>
+        <span className="text-lg font-bold text-[#000000]">Brisphere</span>
+        </Link>
         {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex text-lg text-[#2e2e2e] font-semibold space-x-6">
+        <nav className="hidden md:flex text-lg text-[#2e2e2e] font-normal space-x-6">
           <a href="#home" >
             Discover
           </a>
@@ -26,7 +27,7 @@ const Header = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-gray-700 focus:outline-none"
+          className="text-gray-700 md:hidden focus:outline-none"
           onClick={toggleMenu}
         >
           <svg
@@ -47,14 +48,14 @@ const Header = () => {
 
       {/* Mobile Navigation Links */}
       {isOpen && (
-        <div className="md:hidden bg-white shadow-md">
-          <a href="#home" className="block text-gray-700 px-4 py-2">
+        <div className="bg-white shadow-md md:hidden">
+          <a href="#home" className="block px-4 py-2 text-gray-700">
             Home
           </a>
-          <a href="#discover" className="block text-gray-700 px-4 py-2">
+          <a href="#discover" className="block px-4 py-2 text-gray-700">
             Discover
           </a>
-          <a href="#about-us" className="block text-gray-700 px-4 py-2 ">
+          <a href="#about-us" className="block px-4 py-2 text-gray-700 ">
             About Us
           </a>
         </div>

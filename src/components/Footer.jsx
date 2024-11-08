@@ -1,12 +1,15 @@
 import React from 'react';
 
 const Footer = () => (
-  <footer className="bg-white py-8 px-6 text-center text-gray-700">
-    <div className="text-lg font-bold">Brisphere</div>
-    <p>Ladakh, India</p>
-    <p>+91-7896897222</p>
-    <p>email@example.com</p>
-    <button className="mt-4 bg-blue-500 text-white px-4 py-2 rounded">Location</button>
+  <footer className="flex flex-col items-start py-8 pl-12 text-center text-gray-700 bg-gray-100 ">
+    <h1 className="text-3xl font-bold text-black">Brisphere</h1>
+    <div className='font-semibold text-left'>
+    <p>Spituk, Ladakh,</p>
+    <p>India, 194101</p>
+    <p>+91-7764997033</p>
+    <p>amit.jha6700@gmail.com</p>
+    </div>
+    <button className="px-8 py-4 mt-4 text-white text-lg font-semibold bg-[#2667a8] rounded">Location</button>
   </footer>
 );
 
