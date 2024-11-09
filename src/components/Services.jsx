@@ -10,7 +10,6 @@ import {
   FaWifi,
 } from "react-icons/fa";
 
-
 const services = [
   {
     id: 1,
@@ -82,14 +81,16 @@ const ServicesSection = () => {
       <h2 className="mb-8 text-3xl font-bold">Services</h2>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
         {services.map((service) => (
-         
-          <div key={service.id} className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md">
+          <div
+            key={service.id}
+            className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md"
+          >
             {/* Styled Icon */}
-            <div className="mb-4 text-gray-400">
-              {service.icon }
-            </div>
+            <div className="mb-4 text-gray-400">{service.icon}</div>
             <h3 className="mb-2 text-lg font-bold">{service.title}</h3>
-            <p className="text-sm font-semibold text-left gray-600 font-sm">{service.description}</p>
+            <p className="text-sm font-semibold text-left gray-600 font-sm">
+              {service.description}
+            </p>
           </div>
         ))}
       </div>

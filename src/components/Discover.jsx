@@ -2,8 +2,7 @@
 
 import om from "../assets/om.jpg";
 import img2 from "../assets/img2.jpg";
-import { reviews } from '../data'; // Import reviews data
-
+import { reviews } from "../data";
 
 const DiscoverSection = () => {
   return (
@@ -42,27 +41,25 @@ const DiscoverSection = () => {
             alt="Ladakh Landscape"
             className="object-cover w-full h-48"
           />
-          <div
-          className="w-full max-w-sm p-6 text-left bg-white rounded-lg shadow-md"
-        >
-          <div className="flex items-center mb-4">
-            <img
-              src={reviews[0].imageUrl}
-              alt={`${reviews[0].name}`}
-              className="object-cover w-12 h-12 mr-4 rounded-full"
-            />
-            <div>
-              <h3 className="text-lg font-bold">{reviews[0].name}</h3>
-              <div className="text-yellow-500">⭐⭐⭐⭐</div>
+          <div className="w-full max-w-sm p-6 text-left bg-white rounded-lg shadow-md">
+            <div className="flex items-center mb-4">
+              <img
+                src={reviews[0].imageUrl}
+                alt={`${reviews[0].name}`}
+                className="object-cover w-12 h-12 mr-4 rounded-full"
+              />
+              <div>
+                <h3 className="text-lg font-bold">{reviews[0].name}</h3>
+                <div className="text-yellow-500">⭐⭐⭐⭐</div>
+              </div>
             </div>
+            <p className="text-gray-600">
+              {reviews[0].review.substring(0, 150)}...{" "}
+              <a href="/" className="text-blue-600">
+                read more
+              </a>
+            </p>
           </div>
-          <p className="text-gray-600">
-            {reviews[0].review.substring(0, 150)}...{' '}
-            <a href="/" className="text-blue-600">
-              read more
-            </a>
-          </p>
-        </div>
         </div>
 
         {/* Remaining Cards */}

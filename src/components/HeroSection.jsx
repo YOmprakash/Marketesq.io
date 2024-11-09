@@ -7,7 +7,6 @@ const HeroSection = () => {
   return (
     <section className="relative px-2 pt-6 md:px-12">
       <div className="flex flex-col items-center bg-white md:bg-gray-100 md:flex-row md:justify-between md:items-start md:space-x-6">
-        
         {/* Left Section */}
         <div className="flex flex-col items-center p-6 text-center rounded-lg md:items-start md:text-left md:w-1/2 md:rounded-none md:shadow-none">
           <h2 className="mt-4 text-3xl font-semibold leading-snug text-black sm:text-4xl md:text-5xl">
@@ -16,7 +15,7 @@ const HeroSection = () => {
           <p className="mt-4 text-base font-semibold text-gray-700 sm:text-lg md:text-xl">
             India’s first true digital tourism ecosystem
           </p>
-          
+
           {/* Social Media Icons */}
           <div className="flex mt-4 space-x-4">
             <a
@@ -35,7 +34,7 @@ const HeroSection = () => {
             </a>
           </div>
         </div>
-        
+
         {/* Right Section Image */}
         <div className="w-full mt-6 md:w-1/2 md:mt-0">
           <img

@@ -178,7 +178,7 @@ const BookingPage = () => {
               <label className="block font-semibold text-gray-700">ROOMS</label>
               <div className="flex items-center justify-center mt-1 space-x-2">
                 <button type="button" onClick={() => updateRooms(-1)}>
-                  <CiCircleMinus size={24}/>
+                  <CiCircleMinus size={24} />
                 </button>
                 <span className="font-semibold">{rooms}</span>
                 <button type="button" onClick={() => updateRooms(1)}>
@@ -188,20 +188,24 @@ const BookingPage = () => {
             </div>
 
             <div>
-              
               <div className="flex items-center w-full max-w-[150px]  justify-between rounded-lg  bg-[#2667a8]">
-              <div className="flex items-center ml-3 text-white ">
-                <span className="mr-1 text-lg">₹</span>
-                <p className="text-lg font-semibold"> {amount.toLocaleString("en-IN")}</p>
+                <div className="flex items-center ml-3 text-white ">
+                  <span className="mr-1 text-lg">₹</span>
+                  <p className="text-lg font-semibold">
+                    {" "}
+                    {amount.toLocaleString("en-IN")}
+                  </p>
+                </div>
+                <button
+                  type="submit"
+                  className="px-4 rounded-r-lg py-4 bg-[#174c82] hover:bg-[#065baf] "
+                >
+                  <FaArrowRight size={24} className="text-white" />
+                </button>
               </div>
-              <button
-                type="submit"
-                className="px-4 rounded-r-lg py-4 bg-[#174c82] hover:bg-[#065baf] "
-              >
-                <FaArrowRight size={24} className="text-white"/>
-              </button>
-            </div>
-            <span className="font-semibold text-center text-[12px] ">Click to pay token amount</span>
+              <span className="font-semibold text-center text-[12px] ">
+                Click to pay token amount
+              </span>
             </div>
           </div>
         </form>

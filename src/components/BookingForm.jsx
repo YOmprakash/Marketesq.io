@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 import { CiCircleMinus } from "react-icons/ci";
 import { FaCirclePlus } from "react-icons/fa6";
@@ -8,12 +8,12 @@ import { setBookingData } from "../store/slices/bookingSlice";
 
 const BookingForm = () => {
   const [rooms, setRooms] = useState(1);
-  const [checkInDate, setCheckInDate] = useState('');
-  const [checkOutDate, setCheckOutDate] = useState('');
+  const [checkInDate, setCheckInDate] = useState("");
+  const [checkOutDate, setCheckOutDate] = useState("");
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
-    const today = new Date().toISOString().split('T')[0];
+    const today = new Date().toISOString().split("T")[0];
     setCheckInDate(today);
     setCheckOutDate(today);
     dispatch(setBookingData({ checkInDate: today, checkOutDate: today }));
@@ -29,7 +29,7 @@ const BookingForm = () => {
     setCheckInDate(selectedDate);
     dispatch(setBookingData({ checkInDate: selectedDate }));
   };
-  
+
   const handleCheckOutDateChange = (e) => {
     const selectedDate = e.target.value;
     if (!checkInDate || selectedDate > checkInDate) {
@@ -74,12 +74,16 @@ const BookingForm = () => {
 
       {/* Rooms Selector */}
       <div className="flex flex-col items-center mb-4 md:mb-0">
-        <label className="mb-1 text-lg font-semibold text-gray-700">ROOMS</label>
+        <label className="mb-1 text-lg font-semibold text-gray-700">
+          ROOMS
+        </label>
         <div className="flex items-center space-x-2">
           <button onClick={() => handleRoomChange(-1)} className="outline-none">
             <CiCircleMinus size={24} />
           </button>
-          <span className="px-2 text-lg font-semibold text-gray-700">{rooms}</span>
+          <span className="px-2 text-lg font-semibold text-gray-700">
+            {rooms}
+          </span>
           <button onClick={() => handleRoomChange(1)} className="outline-none">
             <FaCirclePlus size={22} />
           </button>
@@ -87,7 +91,7 @@ const BookingForm = () => {
       </div>
 
       {/* Book Button */}
-      <Link to='/booking' className="w-full md:w-auto">
+      <Link to="/booking" className="w-full md:w-auto">
         <button className="w-full md:w-auto px-8 py-3 font-semibold text-white bg-[#2667a8] rounded-lg hover:bg-blue-700">
           BOOK
         </button>

@@ -1,4 +1,4 @@
-// src/redux/slices/bookingSlice.js
+//bookingSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
@@ -22,7 +22,7 @@ const bookingSlice = createSlice({
       return { ...state, ...action.payload };
     },
     resetBookingData: () => {
-      return initialState; // Resets state to initial values
+      return initialState; 
     },
   },
 });

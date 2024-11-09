@@ -9,20 +9,14 @@ const Header = () => {
     <header className="px-12 bg-white">
       <div className="flex items-center justify-between py-4 mx-auto max-w-7xl">
         {/* Logo */}
-        <Link to='/'>
-        <span className="text-lg font-bold text-[#000000]">Brisphere</span>
+        <Link to="/">
+          <span className="text-lg font-bold text-[#000000]">Brisphere</span>
         </Link>
         {/* Desktop Navigation Links */}
         <nav className="hidden md:flex text-lg text-[#2e2e2e] font-normal space-x-6">
-          <a href="#home" >
-            Discover
-          </a>
-          <a href="#discover" >
-            Services
-          </a>
-          <a href="#about-us">
-            About Us
-          </a>
+          <a href="#home">Discover</a>
+          <a href="#discover">Services</a>
+          <a href="#about-us">About Us</a>
         </nav>
 
         {/* Mobile Menu Button */}
