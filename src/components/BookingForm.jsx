@@ -1,15 +1,43 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
-import { FaMinus, FaPlus } from "react-icons/fa";
+
 import { CiCircleMinus } from "react-icons/ci";
 import { FaCirclePlus } from "react-icons/fa6";
+import { useDispatch } from "react-redux";
+import { setBookingData } from "../store/slices/bookingSlice";
 
 const BookingForm = () => {
   const [rooms, setRooms] = useState(1);
-
+  const [checkInDate, setCheckInDate] = useState('');
+  const [checkOutDate, setCheckOutDate] = useState('');
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    const today = new Date().toISOString().split('T')[0];
+    setCheckInDate(today);
+    setCheckOutDate(today);
+    dispatch(setBookingData({ checkInDate: today, checkOutDate: today }));
+  }, [dispatch]);
   // Function to handle room count
   const handleRoomChange = (value) => {
-    setRooms((prev) => Math.max(1, prev + value));
+    const updatedRooms = Math.max(1, rooms + value);
+    setRooms(updatedRooms);
+    dispatch(setBookingData({ rooms: updatedRooms }));
+  };
+  const handleCheckInDateChange = (e) => {
+    const selectedDate = e.target.value;
+    setCheckInDate(selectedDate);
+    dispatch(setBookingData({ checkInDate: selectedDate }));
+  };
+  
+  const handleCheckOutDateChange = (e) => {
+    const selectedDate = e.target.value;
+    if (!checkInDate || selectedDate > checkInDate) {
+      setCheckOutDate(selectedDate);
+      dispatch(setBookingData({ checkOutDate: selectedDate }));
+    } else {
+      alert("Check-out date must be after the check-in date.");
+    }
   };
 
   return (
@@ -19,6 +47,9 @@ const BookingForm = () => {
         <label className="text-lg font-semibold text-gray-700">CHECK-IN</label>
         <input
           type="date"
+          min={checkInDate}
+          value={checkInDate}
+          onChange={handleCheckInDateChange}
           className="mt-1 text-sm font-bold text-gray-700 focus:outline-none"
         />
       </div>
@@ -31,6 +62,9 @@ const BookingForm = () => {
         <label className="text-lg font-semibold text-gray-700">CHECK-OUT</label>
         <input
           type="date"
+          min={checkInDate}
+          value={checkOutDate}
+          onChange={handleCheckOutDateChange}
           className="mt-1 text-sm font-bold text-gray-700 focus:outline-none"
         />
       </div>
