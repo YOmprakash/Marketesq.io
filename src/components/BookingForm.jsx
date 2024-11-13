@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-
-import { CiCircleMinus } from "react-icons/ci";
-import { FaCirclePlus } from "react-icons/fa6";
 import { useDispatch } from "react-redux";
 import { setBookingData } from "../store/slices/bookingSlice";
+import { useNavigate } from "react-router-dom";
+import { CiCircleMinus } from "react-icons/ci";
+import { FaCirclePlus } from "react-icons/fa6";
 
 const BookingForm = () => {
   const [rooms, setRooms] = useState(1);
   const [checkInDate, setCheckInDate] = useState("");
   const [checkOutDate, setCheckOutDate] = useState("");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const today = new Date().toISOString().split("T")[0];
@@ -18,12 +18,13 @@ const BookingForm = () => {
     setCheckOutDate(today);
     dispatch(setBookingData({ checkInDate: today, checkOutDate: today }));
   }, [dispatch]);
-  // Function to handle room count
+
   const handleRoomChange = (value) => {
     const updatedRooms = Math.max(1, rooms + value);
     setRooms(updatedRooms);
     dispatch(setBookingData({ rooms: updatedRooms }));
   };
+
   const handleCheckInDateChange = (e) => {
     const selectedDate = e.target.value;
     setCheckInDate(selectedDate);
@@ -37,6 +38,16 @@ const BookingForm = () => {
       dispatch(setBookingData({ checkOutDate: selectedDate }));
     } else {
       alert("Check-out date must be after the check-in date.");
+    }
+  };
+
+  const handleBookClick = () => {
+    if (!checkInDate || !checkOutDate || checkOutDate <= checkInDate) {
+      alert("Please select a valid check-out date greater than the check-in date.");
+    } else {
+      // Dispatch the latest dates to the store
+      dispatch(setBookingData({ checkInDate, checkOutDate }));
+      navigate("/booking");
     }
   };
 
@@ -54,7 +65,7 @@ const BookingForm = () => {
         />
       </div>
 
-      {/* Divider for larger screens */}
+      {/* Divider */}
       <div className="hidden md:block border-l-2 border-gray-300 h-[60px]"></div>
 
       {/* Check-Out Date */}
@@ -69,21 +80,17 @@ const BookingForm = () => {
         />
       </div>
 
-      {/* Divider for larger screens */}
+      {/* Divider */}
       <div className="hidden md:block border-l-2 border-gray-300 h-[60px]"></div>
 
       {/* Rooms Selector */}
       <div className="flex flex-col items-center mb-4 md:mb-0">
-        <label className="mb-1 text-lg font-semibold text-gray-700">
-          ROOMS
-        </label>
+        <label className="mb-1 text-lg font-semibold text-gray-700">ROOMS</label>
         <div className="flex items-center space-x-2">
           <button onClick={() => handleRoomChange(-1)} className="outline-none">
             <CiCircleMinus size={24} />
           </button>
-          <span className="px-2 text-lg font-semibold text-gray-700">
-            {rooms}
-          </span>
+          <span className="px-2 text-lg font-semibold text-gray-700">{rooms}</span>
           <button onClick={() => handleRoomChange(1)} className="outline-none">
             <FaCirclePlus size={22} />
           </button>
@@ -91,11 +98,12 @@ const BookingForm = () => {
       </div>
 
       {/* Book Button */}
-      <Link to="/booking" className="w-full md:w-auto">
-        <button className="w-full md:w-auto px-8 py-3 font-semibold text-white bg-[#2667a8] rounded-lg hover:bg-blue-700">
-          BOOK
-        </button>
-      </Link>
+      <button
+        onClick={handleBookClick}
+        className="w-full md:w-auto px-8 py-3 font-semibold text-white bg-[#2667a8] rounded-lg hover:bg-blue-700"
+      >
+        BOOK
+      </button>
     </div>
   );
 };
