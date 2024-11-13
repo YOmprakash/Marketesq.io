@@ -42,7 +42,7 @@ const Header = () => {
 
       {/* Mobile Navigation Links */}
       {isOpen && (
-        <div className="bg-white shadow-md md:hidden">
+        <div className="bg-white md:hidden">
           <a href="#home" className="block px-4 py-2 text-gray-700">
             Home
           </a>
